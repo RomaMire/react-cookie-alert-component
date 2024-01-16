@@ -1,0 +1,38 @@
+@use "../mixins/mixins" as *;
+
+.cookie {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+	width: 100vw;
+	position: fixed;
+	bottom: 0;
+	transform: translate(0, 0);
+	z-index: 5;
+	background-color: rgba(108, 19, 19, 0.9);
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	transition: transform 2s;
+
+	&__disactive {
+		transform: translate(0, 300%);
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 100vw;
+		max-width: 1200px;
+		height: 100%;
+
+		p {
+			text-align: center;
+			color: white;
+			margin-left: 1rem;
+			margin-right: 1rem;
+		}
+	}
+}
