@@ -6,12 +6,7 @@ import styles from "./cookie.module.scss";
 
 const Cookie = (props) => {
 	const [isVisible, setIsVisible] = useState(false);
-
-	const checkBanner = () => {
-		if (localStorage.script_alert === "false") {
-			setIsVisible(true);
-		}
-	};
+	const [localStorages, setLocalStorages] = useState(null);
 
 	const closeBanner = () => {
 		setIsVisible(false);
@@ -19,13 +14,22 @@ const Cookie = (props) => {
 	};
 
 	useEffect(() => {
-		localStorage.setItem("script_alert", "false");
+		setLocalStorages(localStorage.script_alert);
+
+		//localStorage.setItem("script_alert", "false");
+
+		const checkBanner = () => {
+			if (localStorages === "false") {
+				setIsVisible(true);
+			}
+		};
+
 		const timeout = setTimeout(checkBanner, 3000);
 
 		return () => {
 			clearTimeout(timeout);
 		};
-	}, []);
+	}, [localStorages]);
 
 	return (
 		<>
